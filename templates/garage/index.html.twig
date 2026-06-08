@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+ <!-- accordion style 3 start -->
+                    <div class="col-lg-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="header-title">Garages</h5>
+                                <div id="accordion3" class="according accordion-s3">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="card-link" data-toggle="collapse" href="#accordion31">Ajouter un nouveau garage</a>
+                                        </div>
+                                        <div id="accordion31" class="collapse" data-parent="#accordion3">
+                                            <div class="card-body">
+
+                                            {{form_start(form,{'attr': {'novalidate': 'novalidate'}} )}}
+
+                                            <div class="form-row align-items-center">
+                                                <div class="col-sm-3 my-1">
+                                                   {{ form_widget(form.matriculeGarage,{'attr':{'class':'form-control' , 'placeholder': 'Matricule'}}) }}
+                                                       <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.matriculeGarage) }} 
+                                                       </div>
+                                                </div>
+                                                 <div class="col-sm-3 my-1">
+                                                   {{ form_widget(form.surface,{'attr':{'class':'form-control','placeholder': 'Surface en m²'}}) }}
+                                                   <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.surface) }} 
+                                                       </div>
+                                                </div>
+                                                <div class="col-sm-3 my-1">
+                                                  {{ form_widget(form.localisation,{'attr':{'class':'form-control','placeholder': 'Localisation'}}) }}
+                                                  <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.localisation) }} 
+                                                       </div>
+                                                </div>
+                                                <div class="col-auto my-1">
+                                                  {{ form_widget(form.ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+                                                </div>
+                                            </div>
+                                            {{form_end(form)}}
+                                            </div>
+                                        </div>
+                                        </div>
+                                           <!-- Progress Table start -->
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover progress-table text-center">
+                                            <thead class="text-uppercase">
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Matricule</th>
+                                                    <th scope="col">Surface</th>
+                                                    <th scope="col">Progress</th>
+                                                    <th scope="col">Localisation</th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for g in garages %}
+                                                <tr>
+                                                    <th scope="row">{{ g.id }}</th>
+                                                    <td>{{g.matriculeGarage}}</td>
+                                                    <td>{{g.surface}}</td>
+                                                    <td>
+                                                        <div class="progress" style="height: 8px;">
+                                                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="status-p bg-primary">{{g.localisation}}</span></td>
+
+
+                                                    <td>
+                                                        <ul class="d-flex justify-content-center">
+                                                            <li class="mr-3">
+                                                            <a href="{{ path('app_updateg',{'id':g.id}) }}" class="text-secondary"><i class="fa fa-edit"></i></a>
+                               
+                                                            </li>
+                                                              <li>
+                                                         <a href="{{ path('app_deleteg',{'id':g.id}) }}" onClick=" return confirm('Voulez vous Vraiment supprimer le garage N° {{ g.id }} ?')" class="text-danger"><i class="ti-trash"></i></a>
+                                 <!-- Modal -->
+                          <!--      <div class="modal fade" id="exampleModalLong">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Warning-Alert!</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p> Vous voulez Vraiment supprimer le Garage N° {{ g.id }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button  type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                                <a href="{{ path('app_deleteg',{'id':g.id}) }}" type="button" class="btn btn-danger">Oui</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                   <!-- basic modal end -->
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                               {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                    <!-- Progress Table end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- accordion style 3 end -->
+
+{% endblock %}
+
+
+

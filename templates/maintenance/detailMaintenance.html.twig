@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+           <div class="main-content-inner">
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="invoice-area">
+                                    <div class="invoice-head">
+                                        <div class="row">
+                                            <div class="iv-left col-6">
+                                                <span>MAINTENACE</span>
+                                            </div>
+                                            <div class="iv-right col-6 text-md-right">
+                                                <span># {{ maintenance.id }} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6">
+                                            <div class="invoice-address">
+                                                <h3> {{ maintenance.type }} </h3>
+                                                <h5> Responsable : {{ maintenance.idVoiture.idEntreprisePartenaire.nomAdmin }} </h5>
+                                                <p>Agence : {{ maintenance.idVoiture.idEntreprisePartenaire.nomEntreprise }} </p>
+                                                <p> Num : {{ maintenance.idVoiture.idEntreprisePartenaire.tel}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-md-right">
+                                            <ul class="invoice-date">
+                                                <li> Date : {{ maintenance.dateMaintenance|date('Y-m-d')  }} </li>
+                                                <li> de {{ maintenance.dateMaintenance|date('H:i')}} jusqu'à {{ maintenance.finMaintenance|date('H:i')}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="invoice-table table-responsive mt-5">
+                                        <table class="table table-bordered table-hover text-right">
+                                            <thead>
+                                                <tr class="text-capitalize">
+                                                    <th class="text-center">Voiture</th>
+                                                    <th class="text-center">Matricule</th>
+                                                    <th>Model</th>
+                                                    <th>Kilometrage</th>
+                                                    <th>Nombre des Maintenances</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center"> {{ maintenance.idVoiture.marque }} </td>
+                                                    <td class="text-center"> {{ maintenance.idVoiture.matricule }}</td>
+                                                    <td>{{ maintenance.idVoiture.model }}</td>
+                                                    <td>{{ maintenance.idVoiture.kilometrage }}</td>
+                                                    <td>4</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="4">Garage :</td>
+                                                    <td>  {{ maintenance.idGarage.matriculeGarage }} / {{ maintenance.idGarage.localisation }}</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="invoice-buttons text-right">
+                                    <a href="{{ path('app_pdf',{'id':maintenance.id}) }}" class="invoice-btn">Generer PDF</a>
+                                    <a href="#" class="invoice-btn">Generer QR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main content area end -->
+{% endblock %}

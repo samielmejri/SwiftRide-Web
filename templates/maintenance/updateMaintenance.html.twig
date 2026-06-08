@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+<div class="col-lg-12  mt-5">
+                        <div class="row">
+
+ <!-- basic form start -->
+                              <div class="col-3 mt-5">
+                                <div class="card">
+                                </div>
+                                </div>
+                            <div class="col-6 mt-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Mettre à jour le materiel N° {{ m.id }} </h4>
+                                        {{form_start(form,{'attr': {'novalidate': 'novalidate'}} )}}
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Date Début : </label>
+                                                {{ form_widget(form.dateMaintenance,{'attr':{'class':'form-control'}}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.dateMaintenance) }} 
+                                                       </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Type : </label>
+                                               {{ form_widget(form.type,{'attr':{'class':'custom-radio'}}) }}
+                                            </div>
+
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.type) }} 
+                                                       </div>
+                                             <div class="form-group">
+                                                <label for="exampleInputPassword1">Garage : </label>
+                                                 {{ form_widget(form.idGarage,{'attr':{'class':'form-control'} }) }}
+                                            </div>
+                                            <div class="col-auto my-1">
+                                                  {{ form_widget(form.ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+                                                </div>
+                                                   {{form_end(form)}}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+         </div>
+                            <!-- basic form end -->
+  <style>
+ 
+.classe-radio {
+    display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+</style>
+
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block booby %}
+<div class="col-lg-12 mt-5">
+<div class="row">
+ <!-- basic form start -->
+                            <div class="col-8 mt-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <div class="row">
+                                    <div class="col-2">
+                                    </div>
+                                    <div class="col-8 mt-5">
+                                        <h4 class="header-title">Prenez un rendez-vous</h4>
+                                        {{form_start(form,{'attr': {'novalidate': 'novalidate'}} )}}
+                                        <div class="form-group ">
+                                                <label>Nos Garages </label>
+                                                {{ form_widget(form.idGarage,{'attr':{'class':'form-control'} }) }}
+                                                <div class="form-control-feedback" style="color: red;" >
+                                                    {{ form_errors(form.idGarage) }} 
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Date et heur de maintenance</label>
+                                                 {{ form_widget(form.dateMaintenance,{'attr':{'class':'form-control'}})}}
+                                                   <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.dateMaintenance) }} 
+                                                       </div>
+                                                </div>
+                                            {{ form_widget(form.suivant,{'attr':{'class':' btn btn-primary'}}) }}
+                                    {{ form_end(form) }}
+                                    </div>
+                                    </div>
+                                    <div class="col-2">
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                  <!-- Active Items start -->
+                    <div class="col-md-4 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item active header-title"> {{ v.model }} / {{ v.marque }} : {{ v.matricule }} </li>
+                                    <li class="list-group-item"> Kilometrage : {{ v.kilometrage }} </li>
+                                    <li class="list-group-item"> Nombre des maintenance passé : 0</li>
+                                    <li class="list-group-item">Nombre des reservations passé : 0</li>
+                                    <li class="list-group-item">Etat technique du voiture : {{ v.etatTechnique }} </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Active Items end -->
+  <!-- basic form end -->
+  </div>
+  </div>
+
+{% endblock %}

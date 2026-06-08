@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block booby %}
+<body>
+      
+        <!-- main content area start -->
+                    
+                    <!-- Dark table start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Détails sur les voiture de Mr/Mmme : 'nom_partenaire' </h4>
+                                <div class="data-tables datatable-dark">
+                                    <table id="dataTable3" class="text-center">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Marque</th>
+                                                <th>Model</th>
+                                                <th>Matricule</th>
+                                                <th>Date de circulation</th>
+                                                <th>Kilometrage</th>
+                                                <th>Passé un maintenance</th>
+                                                <th>Etat Technique : </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for v in voitures %}
+                                            
+                                            <tr>
+                                                <td> {{v.id}}</td>
+                                                <td> {{ v.marque }} </td>
+                                                <td> {{ v.model }} </td>
+                                                <td> {{ v.matricule }} </td>
+                                                <td> {{ v.dateCirculation }} </td>
+                                                <td> {{ v.kilometrage }} </td>
+                                                 <td> <a href="{{ path('rendez_vous',{'id':v.id}) }}" class="text-primary"><span class="ti-calendar"></span><span class="icon-name"></span></a>
+                                                             </td>
+                                                <td> {{ v.etatTechnique }} </td>
+                                            </tr>
+
+                                            
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dark table end -->
+</body>
+{% endblock %}

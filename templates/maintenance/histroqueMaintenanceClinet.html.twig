@@ -1,0 +1,69 @@
+{% extends 'baseIndex.html.twig' %}
+
+{% block body %}
+
+
+
+ <!-- Contact Start -->
+    <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-md-8 mx-auto d-block mb-2">
+                     <!-- table light start -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Historique des Maintenances </h4>
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table text-center">
+                                            <thead class="text-uppercase bg-light">
+                                                <tr>
+                                                    <th scope="col">Type</th>
+                                                    <th scope="col">Date Debut</th>
+                                                    <th scope="col">Date Fin</th>
+                                                    <th scope="col">Garage / Lieu</th>
+                                                    <th scope="col">Voiture / Marque</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for m in maintenances %}
+                                                <tr>
+                                                    <td> {{ m.type }} </td>
+                                                    <td> {{ m.dateMaintenance|date('Y-m-d H:i:s') }} </td>
+                                                    <td> {{ m.finMaintenance|date('Y-m-d H:i:s')}} </td>
+                                                     <td> {{ m.idGarage.matriculeGarage }}  /  {{ m.idGarage.localisation }} </td>
+                                                     <td> {{ m.idVoiture.matricule }} / {{ m.idVoiture.marque }} </td>
+                                                    <td>
+                                                    {% if date(m.dateMaintenance|date('Y-m-d')) < date("now"|date("Y-m-d"))%}
+                                                   <span style="color:green"> Passé</span>
+                                                   
+
+                                                    {% elseif date(m.dateMaintenance|date('Y-m-d')) > date("now"|date("Y-m-d"))%}
+                                                    <span style="color:red">
+                                                    Rendez-vous
+                                                    <a href="{{ path('supp_maint',{'id':m.id}) }} onClick=" return confirm('Voulez vous Vraiment Annuler le maintenance N° {{ m.id }} ?')"">(annuler)</a>
+                                                    </span>
+                                                    {% else %}
+                                                    <span style="color:black">
+                                                   Aujourd'hui
+                                                    </span>
+                                                    {% endif %}
+                                                    <a href="{{ path('app_detail_maint_client',{'id':m.id}) }}" style="color:green;"> Détail! </a>
+                                                    </td>
+
+
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- table light end -->
+             
+    <!-- Contact End -->
+
+
+
+{% endblock %}

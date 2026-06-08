@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+<div class="col-ml-12">
+                        <div class="row">
+
+ <!-- basic form start -->
+                                <div class="col-3 mt-5">
+                                <div class="card">
+                                </div>
+                                </div>
+                            <div class="col-6 mt-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Mettre à jour le materiel N° {{ g.id }} </h4>
+                                               {{form_start(form,{'attr': {'novalidate': 'novalidate'}} )}}
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Matricule : </label>
+                                                   {{ form_widget(form.matriculeGarage,{'attr':{'class':'form-control' , 'placeholder': 'Matricule'}}) }}
+                                                       <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.matriculeGarage) }} 
+                                                       </div>
+                                                       </div>
+                                                        <div class="form-group">
+                                                        <label for="exampleInputEmail1">Surface (m²) : </label>
+                                                   {{ form_widget(form.surface,{'attr':{'class':'form-control','placeholder': 'Surface en m²'}}) }}
+                                                   <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.surface) }} 
+                                                       </div>
+                                                       </div>
+                                                        <div class="form-group">
+                                                        <label for="exampleInputEmail1">Localisation : </label>
+                                                  {{ form_widget(form.localisation,{'attr':{'class':'form-control','placeholder': 'Localisation'}}) }}
+                                                  <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(form.localisation) }} 
+                                                       </div>
+                                                        </div>
+                                                <div class="col-auto my-1">
+                                                  {{ form_widget(form.ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+                                                </div>
+                                            {{form_end(form)}}
+                                    </div>
+                                </div>
+                            </div>
+         </div>
+                            <!-- basic form end -->
+  <style>
+ 
+.classe-radio {
+    display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+</style>
+
+{% endblock %}
+

@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+ <!-- accordion style 3 start -->
+                    <div class="col-lg-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="header-title">Les maintenances</h5>
+                          
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover progress-table text-center">
+                                            <thead class="text-uppercase">
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Type</th>
+                                                    <th scope="col">Date debut</th>
+                                                    <th scope="col">Date fin</th>
+                                                    <th scope="col">status</th>
+                                                     <th scope="col">Garage / lieu</th>
+                                                     <th scope="col">Voitue / Marque</th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for m in maintenances %}
+                                                
+                                            
+                                                <tr>
+                                                    <th scope="row"> {{ m.id }} </th>
+                                                    <td> {{ m.type }} </td>
+                                                    <td> {{ m.dateMaintenance|date('Y-m-d H:i:s') }} </td>
+                                                    <td> {{ m.finMaintenance|date('Y-m-d H:i:s')}} </td>
+                                                    
+                                                    <td>
+                                                    
+                                                    {% if date(m.dateMaintenance|date('Y-m-d')) < date("now"|date("Y-m-d"))%}
+                                                   <span class="status-p bg-success"> Terminer</span>
+                                                   
+
+                                                    {% elseif date(m.dateMaintenance|date('Y-m-d')) > date("now"|date("Y-m-d"))%}
+                                                    <span class="status-p bg-warning">
+                                                    A faire
+                                                    </span>
+                                                    {% else %}
+                                                    <span class="status-p bg-primary">
+                                                    en cours
+                                                    </span>
+                                                    {% endif %}
+                                                    </td>
+                                                    
+                                                     <td> {{ m.idGarage.matriculeGarage }}  /  {{ m.idGarage.localisation }} </td>
+                                                     <td> {{ m.idVoiture.matricule }} / {{ m.idVoiture.marque }} </td>
+                                                     <td>
+                                                        <ul class="d-flex justify-content-center">
+                                                   
+
+                                                    {% if date(m.dateMaintenance|date('Y-m-d')) > date("now"|date("Y-m-d"))%}
+                                                    
+                                                      <li class="mr-3"><a href="{{ path('delete_maintenance',{'id':m.id}) }}" onClick=" return confirm('Voulez vous Vraiment Annuler le maintenance N° {{ m.id }} ?')" class="text-danger"> 
+                                                           <i class="fa fa-close"></i><span style="color:red;">Annuler</span> </li>
+                                                  </a></li>
+                                                   <li class="mr-3"><a href="{{ path('update_maintenance',{'id':m.id}) }}" class="text-primary"><i class="fa fa-edit"></i></a></li></br>
+                                                    {% endif %}
+
+                                                            
+                                                             <!-- basic modal start -->
+                                <!-- Modal -->
+                           <!--     <div class="modal fade" id="exampleModalLong">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Warning-Alert!</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p> Vous voulez Vraiment supprimer le maintenance N° {{ m.id }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button  type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                                <a href="{{ path('delete_maintenance',{'id':m.id}) }}" type="button" class="btn btn-danger">Oui</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                    <!-- basic modal end -->
+                                        
+                                        
+                                                           
+                                        <li class="mr-3"> <a href=" {{ path('app_detail_maint',{'id':m.id}) }} "  style="color:green; weight:11xp;"><i class="fa fa-search-plus" ></i></a></li></br>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                    <!-- Progress Table end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- accordion style 3 end -->
+
+{% endblock %}
+
+
+
