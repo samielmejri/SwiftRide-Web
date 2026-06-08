@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+
+
+
+<div class="col-ml-12">
+                        <div class="row">
+
+ <!-- basic form start -->
+                              <div class="col-3 mt-5">
+                                <div class="card">
+                                </div>
+                                </div>
+                            <div class="col-6 mt-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Ajouter Entreprise Partenaire</h4>
+                                        {{form_start(f,{'attr': {'novalidate': 'novalidate'}} )}}
+                                            <div class="form-group">
+                                               {{ form_widget(f.nom_entreprise,{'attr':{'class':'form-control', 'placeholder': "le nom d'entreprise"  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.nom_entreprise) }} 
+                                                       </div>
+                                    
+                                            <div class="form-group">
+                                               {{ form_widget(f.nom_admin,{'attr':{'class':'form-control', 'placeholder': "Nom de Responsable" }}) }}
+                                            </div>
+
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.nom_admin) }} 
+                                                       </div>
+                                            
+                                             <div class="form-group">
+                                               {{ form_widget(f.prenom_admin,{'attr':{'class':'form-control', 'placeholder': "Preom de Responsable"  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.prenom_admin) }} 
+                                                       </div>
+                                             <div class="form-group">
+                                               {{ form_widget(f.nb_voiture,{'attr':{'class':'form-control', 'placeholder': "Nombre de voiture"  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.nb_voiture) }} 
+                                                       </div>
+                                             <div class="form-group">
+                                               {{ form_widget(f.tel,{'attr':{'class':'form-control', 'placeholder': "Nombre télephone"  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.tel) }} 
+                                                       </div>
+                                             <div class="form-group">
+                                               {{ form_widget(f.matricule,{'attr':{'class':'form-control', 'placeholder': "Matricule"  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.matricule) }} 
+                                                       </div>       
+                                              <div class="form-group">
+                                               {{ form_widget(f.login,{'attr':{'class':'form-control', 'placeholder': 'Email'  }}) }}
+                                            </div>
+                                            <div class="form-control-feedback" style="color: red;" >
+                                                       {{ form_errors(f.login) }} 
+                                                       </div>     
+                                       <div class="form-group">
+    <div class="input-group">
+        {{ form_widget(f.mdp, {'attr': {'class': 'form-control'}, 'value': f.mdp.vars.value|default('')|replace({'a': '*', 'b': '*', 'c': '*'})|raw }) }}
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <input type="checkbox" onclick="togglePasswordVisibility()">
+            </div>
+        </div>
+    </div>
+    <div class="form-control-feedback" style="color: red;">
+        {{ form_errors(f.mdp) }}
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("{{ f.mdp.vars.id }}");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
+                                                                                                                                                                   
+                                            <div class="col-auto my-1">
+                                        <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Submit</button>
+
+                                                </div>
+                                                   {{ form_end(f) }}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+         </div>
+                            <!-- basic form end -->
+  <style>
+ 
+.classe-radio {
+    display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+</style>
+
+{% endblock %}
+

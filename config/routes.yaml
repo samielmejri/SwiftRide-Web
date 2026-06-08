@@ -1,0 +1,17 @@
+index:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: 'base.html.twig'
+
+app_entreprisepartenaire:
+   path: '/avis/{id}/add-commentaire'
+   controller: 'App\Controller\CommentController::addCommentaire'
+
+list:
+   path: '/entreprisepartenaire'
+   controller: 'App\Controller\EntreprisePartenaireController::index'
+
+searchEntreprisePartenaire:
+    path: /search-entreprise-partenaire
+    controller: App\Controller\EntreprisePartenaireController::search

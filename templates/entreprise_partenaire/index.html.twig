@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+ <!-- accordion style 3 start -->
+    <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="header-title">Entreprise Partenaire</h5>
+                <div id="accordion3" class="according accordion-s3">
+                    <!-- Striped table start -->
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                    <tr>
+                                        <th scope="col">Nom Entreprise</th>
+                                        <th scope="col">Nom Admin</th>
+                                        <th scope="col">Prenom Admin</th>
+                                        <th scope="col">Nombre Voiture</th>
+                                        <th scope="col">Telephone</th>
+                                        <th scope="col">Matricule</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Mot De Passe</th>
+                                        
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for EntreprisePartenaire in e %}
+                                        <tr>
+                                            <td>{{ EntreprisePartenaire.getNomEntreprise }}</td>
+                                            <td>{{ EntreprisePartenaire.getNomAdmin }}</td>
+                                            <td>{{ EntreprisePartenaire.getPrenomAdmin }}</td>
+                                            <td>{{ EntreprisePartenaire.getNbVoiture }}</td>
+                                            <td>{{ EntreprisePartenaire.tel }}</td>
+                                            <td>{{ EntreprisePartenaire.matricule }}</td>
+                                            <td>{{ EntreprisePartenaire.login }}</td>
+                                            <td>{{ EntreprisePartenaire.mdp }}</td>
+                                           
+
+                                            <td>
+                                            
+                                                <ul class="d-flex justify-content-center">
+                                                        <li class="mr-3"><a href="{{ path('modifEntreprisePartenaire',{'id':EntreprisePartenaire.id}) }}" class="text-primary"><i class="fa fa-edit"></i></a></li>                                                                                                       
+                                                        <li><a href="#" class="text-danger" onclick="confirmDelete('{{ path('supentreprisepartenaire',{'id': EntreprisePartenaire.id}) }}', '{{ EntreprisePartenaire.getNomEntreprise }}')"><i class="ti-trash"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;</li>                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <script>
+function confirmDelete(url, nom_entreprise) {
+    if (confirm('Are you sure you want to delete entreprise ' + nom_entreprise + '?')) {
+        window.location.href = url;
+    }
+}
+</script>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Striped table end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- accordion style 3 end -->
+
+
+    <div class="container d-flex justify-content-center align-items-center">
+  <form action="http://127.0.0.1:8000/addentreprisepartenaire">
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">ajouter une entreprise</button>
+    </div>
+  </form>
+</div>
+
+
+        <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
