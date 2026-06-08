@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block content %}
+    <h1>Détails de la Voiture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voiture.id }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ voiture.marque }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ voiture.model }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ voiture.matricule }}</td>
+            </tr>
+            <tr>
+                <th>Cartegrise</th>
+                <td>{{ voiture.cartegrise }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ voiture.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ voiture.etat }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ voiture.prix }}</td>
+            </tr>
+            <tr>
+                <th>Kilometrage</th>
+                <td>{{ voiture.kilometrage }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ voiture.image }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ voiture.position }}</td>
+            </tr>
+            <tr>
+                <th>EntrepriseId</th>
+                <td>{{ voiture.entrepriseId }}</td>
+            </tr>
+            <tr>
+                <th>DateAjout</th>
+                <td>{{ voiture.dateAjout|date('d/m/Y H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary py-3 px-5" href="{{ path('app_voiture_index') }}">back to list</a>
+    <br>
+    <br>
+
+    <a class="btn btn-primary py-3 px-5" href="{{ path('app_voiture_edit', {'id': voiture.id}) }}">edit</a>
+    <br>
+
+    {{ include('voiture/_delete_form.html.twig') }}
+{% endblock %}

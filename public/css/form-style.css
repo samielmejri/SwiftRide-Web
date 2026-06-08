@@ -1,0 +1,32 @@
+label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: orange;
+    margin-bottom: 0.5em;
+  }
+  
+  label + input {
+    margin-top: 0.5em;
+  }
+
+  .form-group label,
+.form-group input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.form-horizontal .control-label {
+    text-align: right;
+}
+
+.form-horizontal .controls {
+    margin-left: 180px;
+}
+
+.horizontal-form .form-group {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}

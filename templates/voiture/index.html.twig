@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voiture index{% endblock %}
+
+{% block content %}
+    <h1>Liste de vos voitures</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Model</th>
+                <th>Matricule</th>
+                <th>Cartegrise</th>
+                <th>Couleur</th>
+                <th>Etat</th>
+                <th>Prix</th>
+                <th>Kilometrage</th>
+                <th>Image</th>
+                <th>Position</th>
+                <th>EntrepriseId</th>
+                <th>DateAjout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.marque }}</td>
+                <td>{{ voiture.model }}</td>
+                <td>{{ voiture.matricule }}</td>
+                <td>{{ voiture.cartegrise }}</td>
+                <td>{{ voiture.couleur }}</td>
+                <td>{{ voiture.etat }}</td>
+                <td>{{ voiture.prix }}</td>
+                <td>{{ voiture.kilometrage }}</td>
+                <td>{{ voiture.image }}</td>
+                <td>{{ voiture.position }}</td>
+                <td>{{ voiture.entrepriseId }}</td>
+                <td>{{ voiture.dateAjout|date('d/m/Y H:i:s') }}</td>
+                <td>
+                    <a class="btn btn-primary py-3 px-5" href="{{ path('app_voiture_show', {'id': voiture.id}) }}">show</a>
+                    <br>
+                    <br>
+                    <a class="btn btn-primary py-3 px-5" href="{{ path('app_voiture_edit', {'id': voiture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary py-3 px-5" href="{{ path('app_voiture_new') }}">Create new</a>
+{% endblock %}
