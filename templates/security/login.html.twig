@@ -1,0 +1,137 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+        <div class="row">
+
+            </div>
+            
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+       <div class="position-relative px-lg-5" style="z-index: 9;">
+    <a href="" class="navbar-brand ml-auto">
+        <h1 class="text-uppercase text-primary mb-1">SWIFT RIDE</h1>
+    </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="car.html" class="dropdown-item">Car Listing</a>
+                                <a href="detail.html" class="dropdown-item">Car Detail</a>
+                                <a href="booking.html" class="dropdown-item">Car Booking</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="team.html" class="dropdown-item">The Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="pt-4 pb-2">
+            <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+            <p class="text-center small">Enter your username &amp; password to login</p>
+          </div>
+          <form class="row g-3 needs-validation" novalidate="" method="post">
+            {% if error %}
+              <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+              <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+              </div>
+            {% endif %}
+
+            <div class="col-12">
+              <label for="yourUsername" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <div class="invalid-feedback">Please enter your email.</div>
+              </div>
+            </div>
+
+<div class="col-12">
+  <label for="yourPassword" class="form-label">Password</label>
+  <div class="input-group">
+    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <div class="invalid-feedback">Please enter your password!</div>
+  </div>
+</div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary w-100" type="submit">Login</button>
+            </div>
+
+            <div class="col-12 mt-2">
+              <p class="small mb-0">Don't have account? <a href="{{ path('registration') }}">Create an account</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark py-4 px-sm-3 px-md-5 custom-class" style="height: 1px;">
+        <p class="mb-2 text-center text-body">&copy; <a href="#">SWIFT RIDE</a>. All Rights Reserved.</p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+{% endblock %}

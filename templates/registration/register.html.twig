@@ -1,0 +1,192 @@
+{% extends 'front.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="styles.css">
+    {{ parent() }}
+    <style>
+        body {
+            background-image: url('assets/images/car-rent-2.png');
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+        <div class="row">
+
+            </div>
+            
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+       <div class="position-relative px-lg-5" style="z-index: 9;">
+    <a href="" class="navbar-brand ml-auto">
+        <h1 class="text-uppercase text-primary mb-1">SWIFT RIDE</h1>
+    </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="car.html" class="dropdown-item">Car Listing</a>
+                                <a href="detail.html" class="dropdown-item">Car Detail</a>
+                                <a href="booking.html" class="dropdown-item">Car Booking</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="team.html" class="dropdown-item">The Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <div >
+      <div class="card">
+        <div class="card-body">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <img src="assets/img/logo.png" alt="">
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                                    <p class="text-center small">Enter your personal details to create account</p>
+                                </div>
+
+
+{{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+<div class="col-12 mb-3">
+    <label for="yourName" class="form-label sr-only">Your Name</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        {{ form_widget(form.name,{'attr':{'class':'form-control','placeholder':'Your Name'}}) }}
+        <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+</div>
+
+<div class="col-12 mb-3">
+    <label for="yourEmail" class="form-label sr-only">Your Email</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+        </div>
+        {{ form_widget(form.email,{'attr':{'class':'form-control','placeholder':'Your Email'}}) }}
+        <div class="invalid-feedback">Please enter a valid email address!</div>
+    </div>
+</div>
+
+<div class="col-12 mb-3">
+    <label for="yourPassword" class="form-label sr-only">Password</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+        </div>
+        {{ form_widget(form.password.first,{'attr':{'class':'form-control','placeholder':'Password'}}) }}
+        <div class="invalid-feedback">Please enter your password!</div>
+    </div>
+</div>
+
+<div class="col-12 mb-3">
+    <label for="confirmPassword" class="form-label sr-only">Confirm Password</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+        </div>
+        {{ form_widget(form.password.second,{'attr':{'class':'form-control','placeholder':'Confirm Password'}}) }}
+        <div class="invalid-feedback">Please confirm your password!</div>
+    </div>
+</div>
+
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required="">
+                                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                            <div class="invalid-feedback">You must agree before submitting.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Already have an account? <a href="http://127.0.0.1:8000/login">Log in</a></p>
+                                    </div>
+                                {{ form_end(form) }}
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- basic form end -->
+<style>
+.classe-radio {
+display: inline-block;
+position: relative;
+padding-left: 25px;
+margin-right: 10px;
+cursor: pointer;
+font-size: 16px;
+line-height: 20px;
+}
+
+</style>
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark bg-white py-4 px-sm-3 px-md-5 custom-class">
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+{% endblock %}

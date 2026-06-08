@@ -1,0 +1,273 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-3 px-lg-5 d-none d-lg-block">
+        <div class="row">
+            <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-body pr-3" href=""><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</a>
+                    <span class="text-body">|</span>
+                    <a class="text-body px-3" href=""><i class="fa fa-envelope mr-2"></i>info@example.com</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-body px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-body pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-uppercase text-primary mb-1">SWIFT RIDE</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center px-3" id="navbarCollapse">
+    <div class="navbar-nav py-0">
+        <a href="index.html" class="nav-item nav-link active">Home</a>
+        <a href="about.html" class="nav-item nav-link">About</a>
+        <a href="service.html" class="nav-item nav-link">Service</a>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
+            <div class="dropdown-menu rounded-0 m-0">
+                <a href="car.html" class="dropdown-item">Car Listing</a>
+                <a href="detail.html" class="dropdown-item">Car Detail</a>
+                <a href="booking.html" class="dropdown-item">Car Booking</a>
+            </div>
+        </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+            <div class="dropdown-menu rounded-0 m-0">
+                <a href="team.html" class="dropdown-item">The Team</a>
+                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+            </div>
+        </div>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
+    </div>
+</div>
+<div>
+<div class="nav-item dropdown pe-3">
+    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <img src="assets/images/funny.jpg" alt="Profile" class="rounded-circle" style="max-width: 50px; margin-right: 10px;">
+        {% if app.user !=null %}
+            <span class="d-none d-md-block dropdown-toggle">{{ app.user.name }}</span>
+        {% endif %}
+    </a><!-- End Profile Image Icon -->
+    
+    <!-- Dropdown Menu -->
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+        <!-- Dropdown Header -->
+        <li class="dropdown-header">
+            <h6>{{ app.user.username }}</h6>
+            <span>Utilisateur de SWIFTRIDE</span>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <!-- Dropdown Items -->
+        <li><a class="dropdown-item d-flex align-items-center" href="users-profile.html"><i class="bi bi-person"></i> <span>My Profile</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item d-flex align-items-center" href="users-profile.html"><i class="bi bi-gear"></i> <span>Account Settings</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item d-flex align-items-center" href="pages-faq.html"><i class="bi bi-question-circle"></i> <span>FAQ</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item d-flex align-items-center" href="{{ path('app_logout') }}"><i class="bi bi-box-arrow-left"></i> <span>Log Out</span></a></li>
+    </ul>
+</div>
+
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+<div class="col-12">
+  <div class="row">
+    <div class="col-6 mt-5 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title">Ajouter Reservation</h4>
+          {{ form_start(form) }}
+          <div class="form-group">
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}, 'value': app.user.name}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}, 'value': app.user.email}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.depart, {'attr': {'class': 'form-control', 'placeholder': 'Lieu de départ'}}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.arrive, {'attr': {'class': 'form-control', 'placeholder': 'Lieu d\'arrivée'}}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.typeM, {'attr': {'class': 'form-control', 'placeholder': 'Type moyen de transport'}}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.temps, {'attr': {'class': 'form-control', 'placeholder': 'Temps de voyage'}}) }}
+          </div>
+
+          <div class="form-group">
+            {{ form_widget(form.nb_ticket, {'attr': {'class': 'form-control', 'placeholder': 'Nombre de tickets'}}) }}
+          </div>
+
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div><!-- basic form end -->
+<style>
+.classe-radio {
+display: inline-block;
+position: relative;
+padding-left: 25px;
+margin-right: 10px;
+cursor: pointer;
+font-size: 16px;
+line-height: 20px;
+}
+
+</style>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary py-5 px-sm-3 px-md-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-white mr-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i>+012 345 67890</p>
+                <p><i class="fa fa-envelope text-white mr-3"></i>info@example.com</p>
+                <h6 class="text-uppercase text-white py-2">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-dark btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>New Member Registration</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Affiliate Programme</a>
+                    <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Return & Refund</a>
+                    <a class="text-body" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Help & FQAs</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Car Gallery</h4>
+                <div class="row mx-n1">
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-1.jpg" alt=""></a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-2.jpg" alt=""></a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-3.jpg" alt=""></a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-4.jpg" alt=""></a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-5.jpg" alt=""></a>
+                    </div>
+                    <div class="col-4 px-1 mb-2">
+                        <a href=""><img class="w-100" src="img/gallery-6.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-uppercase text-light mb-4">Newsletter</h4>
+                <p class="mb-4">Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p>
+                <div class="w-100 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-dark border-dark" style="padding: 25px;" placeholder="Your Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+                <i>Lorem sit sed elitr sed kasd et</i>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark py-4 px-sm-3 px-md-5">
+        <p class="mb-2 text-center text-body">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.</p>
+        <p class="m-0 text-center text-body">Designed by <a href="https://htmlcodex.com">HTML Codex</a></p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        // Get the comment from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const comment = urlParams.get('comment');
+
+        // If a comment was added, update the corresponding entreprise's comment section
+        if (comment) {
+            const commentDiv = document.getElementById(`comment-${comment.entrepriseId}`);
+            commentDiv.innerHTML = comment.text;
+        }
+    </script>
+{% endblock %}

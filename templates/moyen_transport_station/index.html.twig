@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block booby %}
+
+
+ 
+
+ <!-- accordion style 3 start -->
+    <div class="col-lg-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="header-title">Moyen Transport Et Station</h1>
+                <div id="accordion3" class="according accordion-s3">
+                    <!-- Striped table start -->
+                    <div class="single-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped text-center">
+                                <thead class="text-uppercase">
+                                    <tr>
+                    <th scope="col">TYPE TRANSPORT</th>
+                    <th scope="col">NUMERO TRANSPORT</th>
+                    <th scope="col">VILLE</th>
+                    <th scope="col">NOM STATION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for moyenTransport in moyenTransports %}
+                    {% if moyenTransport.getMoyenStation() is not empty %}
+                        {% for station in moyenTransport.getMoyenStation() %}
+                            <tr>
+                                <td>{{ moyenTransport.type }}</td>
+                                <td>{{ moyenTransport.getNumeroTrans }}</td>
+                                <td>{{ station.ville }}</td>
+                                <td>{{ station.getNomStation }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>{{ moyenTransport.type }}</td>
+                            <td>{{ moyenTransport.getNumeroTrans }}</td>
+                            <td colspan="2"></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+                <!-- Striped table end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- accordion style 3 end -->
+
+{% endblock %}
