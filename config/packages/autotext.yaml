@@ -1,0 +1,9 @@
+autotext:
+    default_options:
+        sentence_count: 5
+        min_sentence_words: 5
+        max_sentence_words: 15
+        paragraph_count: 2
+        min_paragraph_sentences: 3
+        max_paragraph_sentences: 7
+

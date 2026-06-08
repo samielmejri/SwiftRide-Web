@@ -1,0 +1,5 @@
+karser_recaptcha3:
+    site_key: 6LdvQb4lAAAAAC2RF1JhAGyFqpXYj_ZhQltVpCGD
+    secret_key: 6LdvQb4lAAAAAEKTe81if2BMTRg6v1nVGKqoxaTt
+    score_threshold: 0.5
+    

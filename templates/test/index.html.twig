@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+<div class="col-xl-7 col-lg-12 mt-5">
+                        <div class="card">
+                            <div class="card-body bg1">
+                                <h4 class="header-title text-white">Client Feadback</h4>
+                                <div class="testimonial-carousel owl-carousel">
+                                {% for annonce in list %}
+                                    <div class="tst-item">
+                                     <div class="tstu-img">
+                                            <img  src="{{ asset('images/' ~ annonce.image)  }}" alt="{{ annonce.title() }}">
+                                        </div>
+                                        <div class="tstu-content">
+                                            <h4 class="tstu-name">Abel Franecki</h4>
+                                            <span class="profsn">Designer</span>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum ut nihil numquam a aliquam alias necessitatibus ipsa soluta quam!</p>
+                                        </div>
+                                    </div>
+                                     {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+   {% for annonce in list %}
+   <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+       <img  src="{{ asset('images/' ~ annonce.image)  }}" alt="{{ annonce.title() }}">
+	</div>
+	{% endfor %}
+  </div>
+</div>
+                    <!-- testimonial area end -->
+{% endblock %}

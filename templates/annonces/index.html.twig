@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Annonce{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mb-5">Ajouter un annonces</h1>
+
+       {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.title, 'title') }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.title) }}
+        </div>
+
+       
+        <div class="form-group">
+            {{ form_label(form.image, 'image') }}
+            {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.image) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.content) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.date, 'Date') }}
+            {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.date) }}
+        </div>
+         <div class="form-group">
+            {{ form_label(form.voiture, 'voiture') }}
+            {{ form_widget(form.voiture) }}
+            {{ form_errors(form.voiture) }}
+        </div>
+        
+
+          {{ form_row(form.recaptcha) }} 
+    {# must be the same name of this put on the FormBuilder #}
+
+          {{ form_errors(form.recaptcha) }}
+    {# That will display the error of the captcha to user #}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+    
+
+
+
+
+{% endblock %}
+
+    
+    
